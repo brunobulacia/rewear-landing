@@ -2,10 +2,11 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'ReWear — Moda Circular Verificada con Blockchain',
+  title: 'Conocé ReWear',
   description:
     'ReWear es una plataforma descentralizada de compra-venta de ropa de segunda mano que combina inteligencia artificial, NFTs y pago con custodia (escrow) para garantizar autenticidad y confianza sin intermediarios.',
   keywords: ['moda circular', 'segunda mano', 'blockchain', 'NFT', 'IA', 'escrow', 'ReWear'],
+  icons : {icon : '/icon.ico'}
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
