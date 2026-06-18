@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Conocé ReWear',
+  title: 'ReWear — Startup de Moda Circular | Santa Cruz de la Sierra, Bolivia',
   description:
-    'ReWear es una plataforma descentralizada de compra-venta de ropa de segunda mano que combina inteligencia artificial, NFTs y pago con custodia (escrow) para garantizar autenticidad y confianza sin intermediarios.',
-  keywords: ['moda circular', 'segunda mano', 'blockchain', 'NFT', 'IA', 'escrow', 'ReWear'],
+    'ReWear es una startup boliviana de moda circular nacida en Santa Cruz de la Sierra. Combinamos tecnología (IA y blockchain) con un propósito sostenible: darle una segunda vida a la ropa de forma confiable y transparente.',
+  keywords: ['ReWear', 'startup', 'Bolivia', 'Santa Cruz de la Sierra', 'moda circular', 'sostenibilidad', 'segunda mano'],
   icons : {icon : '/icon.ico'}
 };
 

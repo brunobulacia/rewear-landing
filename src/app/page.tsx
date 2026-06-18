@@ -1,6 +1,6 @@
 import {
-  Shirt, ShieldCheck, Bot, Fingerprint, Lock, Sparkles, ArrowRight, Wallet,
-  Recycle, Search, MessageCircle, Heart, Layers, Image as ImageIcon,
+  Shirt, Recycle, ArrowRight, Target, Eye, Heart, MapPin, Mail,
+  Leaf, Sparkles, ShieldCheck, Handshake,
 } from 'lucide-react';
 import { ScreenshotShowcase } from '@/components/ScreenshotShowcase';
 
@@ -25,10 +25,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
           <Logo />
           <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
-            <a href="#problema" className="hover:text-slate-900 transition-colors">El problema</a>
-            <a href="#como-funciona" className="hover:text-slate-900 transition-colors">Cómo funciona</a>
-            <a href="#features" className="hover:text-slate-900 transition-colors">Características</a>
-            <a href="#capturas" className="hover:text-slate-900 transition-colors">Producto</a>
+            <a href="#nosotros" className="hover:text-slate-900 transition-colors">Nosotros</a>
+            <a href="#proposito" className="hover:text-slate-900 transition-colors">Propósito</a>
+            <a href="#producto" className="hover:text-slate-900 transition-colors">Producto</a>
+            <a href="#equipo" className="hover:text-slate-900 transition-colors">Equipo</a>
+            <a href="#contacto" className="hover:text-slate-900 transition-colors">Contacto</a>
           </nav>
           <a href={APP_URL} target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
@@ -42,99 +43,92 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-indigo-50 via-white to-white" />
         <div className="relative max-w-6xl mx-auto px-5 pt-20 pb-24 text-center">
           <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-xs font-medium text-indigo-700 shadow-sm mb-7">
-            <Recycle className="w-3.5 h-3.5" /> Moda circular descentralizada
+            <MapPin className="w-3.5 h-3.5" /> Startup boliviana · Santa Cruz de la Sierra
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold tracking-tight leading-[1.08] max-w-3xl mx-auto">
-            Compra y vende ropa de segunda mano <span className="text-indigo-600">con confianza real</span>
+            Somos <span className="text-indigo-600">ReWear</span>, moda circular con tecnología que genera confianza
           </h1>
           <p className="mt-6 text-lg text-slate-500 max-w-2xl mx-auto">
-            ReWear combina <strong className="text-slate-700">inteligencia artificial</strong>, <strong className="text-slate-700">NFTs</strong> y <strong className="text-slate-700">pago con custodia en blockchain</strong> para
-            que cada prenda sea verificada, auténtica y libre de estafas. Sin intermediarios.
+            Una startup nacida en <strong className="text-slate-700">Santa Cruz de la Sierra, Bolivia</strong>, con una misión simple:
+            darle una segunda vida a la ropa de forma <strong className="text-slate-700">confiable, transparente y sostenible</strong>.
           </p>
           <div className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a href={APP_URL} target="_blank" rel="noopener noreferrer"
+            <a href="#nosotros"
               className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-sm">
-              Entrar al marketplace <ArrowRight className="w-4 h-4" />
+              Conocé nuestra historia <ArrowRight className="w-4 h-4" />
             </a>
-            <a href="#como-funciona"
+            <a href={APP_URL} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold px-6 py-3 rounded-xl transition-colors">
-              Ver cómo funciona
+              Ir a la plataforma
             </a>
-          </div>
-
-          {/* Trust row */}
-          <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto">
-            {[
-              { icon: <Bot className="w-5 h-5" />, label: 'Verificación con IA' },
-              { icon: <Fingerprint className="w-5 h-5" />, label: 'Pasaporte NFT' },
-              { icon: <Lock className="w-5 h-5" />, label: 'Pago en custodia' },
-              { icon: <Recycle className="w-5 h-5" />, label: 'Economía circular' },
-            ].map((t) => (
-              <div key={t.label} className="flex flex-col items-center gap-2 text-slate-500">
-                <div className="w-11 h-11 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">{t.icon}</div>
-                <span className="text-xs font-medium text-slate-600">{t.label}</span>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
-      {/* ─── Problema ─── */}
-      <section id="problema" className="max-w-6xl mx-auto px-5 py-20">
+      {/* ─── Nosotros ─── */}
+      <section id="nosotros" className="max-w-6xl mx-auto px-5 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-3">El problema</p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">El mercado de segunda mano sufre de falta de confianza</h2>
-            <p className="mt-5 text-slate-500 leading-relaxed">
-              ¿Cómo sé que la prenda es auténtica? ¿Cómo sé que su estado es el que dice el vendedor?
-              ¿Cómo pago sin que me estafen? La compra-venta de ropa usada entre personas tiene
-              <strong className="text-slate-700"> información asimétrica</strong>: el comprador no puede verificar lo que compra
-              y no existe un registro confiable del historial de una prenda.
-            </p>
+            <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-3">Quiénes somos</p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Una startup cruceña que cree en la moda con propósito</h2>
+            <div className="mt-5 space-y-4 text-slate-500 leading-relaxed">
+              <p>
+                ReWear nació en <strong className="text-slate-700">Santa Cruz de la Sierra</strong> de la mano de un equipo de jóvenes
+                emprendedores y desarrolladores que veían un mismo problema: comprar y vender ropa usada
+                entre personas es desconfiado, informal e inseguro.
+              </p>
+              <p>
+                Decidimos resolverlo combinando <strong className="text-slate-700">tecnología de punta</strong> —inteligencia artificial
+                y blockchain— con una idea muy humana: que la moda circular crezca cuando las personas
+                <strong className="text-slate-700"> confían</strong> en lo que compran y venden.
+              </p>
+              <p>
+                Somos una empresa joven, local y ambiciosa, que apuesta por un consumo más responsable
+                y por poner a Bolivia en el mapa de la innovación.
+              </p>
+            </div>
           </div>
-          <div className="space-y-4">
+          <div className="grid grid-cols-2 gap-4">
             {[
-              { q: '¿Es auténtica?', a: 'Sin forma de verificar la marca ni el estado real.' },
-              { q: '¿Me van a estafar?', a: 'El dinero se entrega directo, sin garantías.' },
-              { q: '¿Cuál es su historia?', a: 'No hay trazabilidad de dueños ni de origen.' },
+              { icon: <Recycle className="w-5 h-5" />, k: 'Moda circular', v: 'Menos descarte, más reutilización.' },
+              { icon: <ShieldCheck className="w-5 h-5" />, k: 'Confianza', v: 'Tecnología que verifica y protege.' },
+              { icon: <Leaf className="w-5 h-5" />, k: 'Sostenibilidad', v: 'Un impacto ambiental positivo.' },
+              { icon: <MapPin className="w-5 h-5" />, k: 'Hecho en Bolivia', v: 'Orgullo cruceño, visión global.' },
             ].map((c) => (
-              <div key={c.q} className="bg-slate-50 border border-slate-100 rounded-xl p-5">
-                <p className="font-semibold text-slate-900">{c.q}</p>
-                <p className="text-sm text-slate-500 mt-1">{c.a}</p>
+              <div key={c.k} className="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                <div className="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center mb-3">{c.icon}</div>
+                <p className="font-semibold text-slate-900">{c.k}</p>
+                <p className="text-sm text-slate-500 mt-1">{c.v}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── Cómo funciona ─── */}
-      <section id="como-funciona" className="bg-slate-50 border-y border-slate-100">
+      {/* ─── Propósito: Misión / Visión / Valores ─── */}
+      <section id="proposito" className="bg-slate-50 border-y border-slate-100">
         <div className="max-w-6xl mx-auto px-5 py-20">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-3">Cómo funciona</p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Tres tecnologías, una sola promesa: confianza</h2>
-            <p className="mt-4 text-slate-500">ReWear ataca el problema de raíz combinando IA, blockchain y custodia de fondos.</p>
+            <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-3">Nuestro propósito</p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Lo que nos mueve</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                n: '01', icon: <Bot className="w-6 h-6" />, title: 'Verificación con IA',
-                desc: 'Al publicar una prenda, una IA de visión por computadora analiza las fotos: confirma que sea ropa, identifica la marca y evalúa su estado. Lo que no es una prenda, se rechaza automáticamente.',
+                icon: <Target className="w-6 h-6" />, title: 'Misión',
+                desc: 'Hacer de la compra-venta de ropa de segunda mano una experiencia confiable, transparente y accesible para todos, eliminando el miedo a la estafa y a la falsificación.',
               },
               {
-                n: '02', icon: <Fingerprint className="w-6 h-6" />, title: 'Pasaporte digital NFT',
-                desc: 'Cada prenda verificada recibe un NFT: un pasaporte inmutable en la blockchain con su dictamen de autenticidad e historial de dueños. Nadie —ni la plataforma— puede falsificarlo después.',
+                icon: <Eye className="w-6 h-6" />, title: 'Visión',
+                desc: 'Ser la plataforma de moda circular de referencia en Bolivia y la región, demostrando que la tecnología puede impulsar un consumo más responsable y sostenible.',
               },
               {
-                n: '03', icon: <Lock className="w-6 h-6" />, title: 'Pago con custodia (escrow)',
-                desc: 'El dinero del comprador queda retenido en un contrato inteligente, no en manos del vendedor, hasta que confirma la recepción. Si hay un problema, se abre una disputa y la plataforma resuelve.',
+                icon: <Heart className="w-6 h-6" />, title: 'Valores',
+                desc: 'Confianza, transparencia y sostenibilidad. Creemos en la economía circular, en la innovación con propósito y en construir desde Bolivia para el mundo.',
               },
             ].map((s) => (
-              <div key={s.n} className="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
-                <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-indigo-600 text-white flex items-center justify-center">{s.icon}</div>
-                  <span className="text-3xl font-bold text-slate-100">{s.n}</span>
-                </div>
+              <div key={s.title} className="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-indigo-600 text-white flex items-center justify-center mb-5">{s.icon}</div>
                 <h3 className="text-lg font-bold text-slate-900">{s.title}</h3>
                 <p className="mt-2 text-sm text-slate-500 leading-relaxed">{s.desc}</p>
               </div>
@@ -143,54 +137,79 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── Features ─── */}
-      <section id="features" className="max-w-6xl mx-auto px-5 py-20">
+      {/* ─── Producto ─── */}
+      <section id="producto" className="max-w-6xl mx-auto px-5 py-20">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-3">Características</p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Todo lo que necesitás para comprar y vender seguro</h2>
+          <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-3">Nuestro producto</p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Construimos una plataforma que hace realidad nuestra misión</h2>
+          <p className="mt-4 text-slate-500">
+            Una app donde cada prenda se verifica con inteligencia artificial, recibe un pasaporte digital en blockchain
+            y se compra con pago protegido. Así llevamos la confianza a la moda circular.
+          </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {[
-            { icon: <Wallet className="w-5 h-5" />, title: 'Login con billetera', desc: 'Tu identidad es tu wallet Web3. Sin contraseñas que se filtren.' },
-            { icon: <ImageIcon className="w-5 h-5" />, title: 'Verificador de autenticidad', desc: 'Subí una foto y comprobá si esa prenda ya está registrada con su NFT.' },
-            { icon: <Search className="w-5 h-5" />, title: 'Catálogo verificado', desc: 'Solo prendas que pasaron la verificación de IA aparecen a la venta.' },
-            { icon: <Heart className="w-5 h-5" />, title: 'Favoritos', desc: 'Guardá las prendas que te gustan para no perderlas de vista.' },
-            { icon: <MessageCircle className="w-5 h-5" />, title: 'Chat entre partes', desc: 'Coordiná la entrega directamente con el comprador o vendedor.' },
-            { icon: <Layers className="w-5 h-5" />, title: 'Historial on-chain', desc: 'Mirá todas las transacciones por las que pasó cada NFT.' },
-          ].map((f) => (
-            <div key={f.title} className="rounded-xl border border-slate-200 p-6 hover:border-indigo-300 hover:shadow-sm transition-all">
-              <div className="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">{f.icon}</div>
-              <h3 className="font-semibold text-slate-900">{f.title}</h3>
-              <p className="text-sm text-slate-500 mt-1">{f.desc}</p>
-            </div>
-          ))}
-        </div>
+        <ScreenshotShowcase />
       </section>
 
-      {/* ─── Capturas / La app en acción ─── */}
-      <section id="capturas" className="bg-slate-50 border-y border-slate-100">
+      {/* ─── Equipo ─── */}
+      <section id="equipo" className="bg-slate-50 border-y border-slate-100">
         <div className="max-w-6xl mx-auto px-5 py-20">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-3">La app en acción</p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Así se ve ReWear por dentro</h2>
-            <p className="mt-4 text-slate-500">Del catálogo a la verificación con IA y el pago con custodia en blockchain.</p>
+            <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-3">Nuestro equipo</p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Las personas detrás de ReWear</h2>
+            <p className="mt-4 text-slate-500">Un equipo cruceño apasionado por la tecnología y la sostenibilidad.</p>
           </div>
-          <ScreenshotShowcase />
+          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            {[
+              { name: 'Bruno Leandro Bulacia Paz', role: 'Cofundador · Desarrollo' },
+              { name: 'Richard Junior Vargas Osinaga', role: 'Cofundador · Producto' },
+            ].map((m) => (
+              <div key={m.name} className="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm flex items-center gap-4">
+                <div className="w-16 h-16 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xl font-bold shrink-0">
+                  {m.name.split(' ').map((w) => w[0]).slice(0, 2).join('')}
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900">{m.name}</p>
+                  <p className="text-sm text-indigo-600 mt-0.5">{m.role}</p>
+                  <p className="text-xs text-slate-400 mt-1 inline-flex items-center gap-1">
+                    <MapPin className="w-3 h-3" /> Santa Cruz de la Sierra, Bolivia
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ─── CTA final ─── */}
-      <section className="max-w-6xl mx-auto px-5 py-20">
-        <div className="relative overflow-hidden rounded-3xl bg-indigo-600 px-8 py-16 text-center">
-          <Sparkles className="w-8 h-8 text-indigo-200 mx-auto mb-4" />
-          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight max-w-2xl mx-auto">
-            Dale una segunda vida a la moda, con la confianza de la blockchain
-          </h2>
-          <p className="mt-4 text-indigo-100 max-w-xl mx-auto">Entrá al marketplace, conectá tu billetera y empezá a comprar o vender prendas verificadas.</p>
-          <a href={APP_URL} target="_blank" rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 bg-white text-indigo-700 hover:bg-indigo-50 font-semibold px-7 py-3.5 rounded-xl transition-colors">
-            Entrar a ReWear <ArrowRight className="w-4 h-4" />
-          </a>
+      {/* ─── Ubicación / Contacto ─── */}
+      <section id="contacto" className="max-w-6xl mx-auto px-5 py-20">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-3">Dónde estamos</p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Desde Santa Cruz de la Sierra, para el mundo</h2>
+            <p className="mt-5 text-slate-500 leading-relaxed">
+              Somos una startup boliviana con base en <strong className="text-slate-700">Santa Cruz de la Sierra</strong>.
+              Creemos que desde Bolivia se puede construir tecnología de clase mundial con impacto social y ambiental.
+            </p>
+            <div className="mt-7 space-y-3 text-sm">
+              <p className="inline-flex items-center gap-2.5 text-slate-600">
+                <span className="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center"><MapPin className="w-4 h-4" /></span>
+                Santa Cruz de la Sierra, Bolivia
+              </p>
+              <p className="inline-flex items-center gap-2.5 text-slate-600">
+                <span className="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center"><Mail className="w-4 h-4" /></span>
+                rewear@gmail.com
+              </p>
+            </div>
+          </div>
+          <div className="relative overflow-hidden rounded-3xl bg-indigo-600 px-8 py-14 text-center">
+            <Handshake className="w-8 h-8 text-indigo-200 mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-white tracking-tight">Sumate a la moda circular</h3>
+            <p className="mt-3 text-indigo-100">Conocé la plataforma y empezá a comprar o vender con confianza.</p>
+            <a href={APP_URL} target="_blank" rel="noopener noreferrer"
+              className="mt-7 inline-flex items-center gap-2 bg-white text-indigo-700 hover:bg-indigo-50 font-semibold px-7 py-3.5 rounded-xl transition-colors">
+              Ir a ReWear <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -200,16 +219,16 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex flex-col items-center md:items-start gap-2">
               <Logo />
-              <p className="text-sm text-slate-400">Plataforma descentralizada de moda circular.</p>
+              <p className="text-sm text-slate-400">Moda circular con confianza, desde Bolivia.</p>
             </div>
             <div className="text-center md:text-right text-sm text-slate-500">
-              <p className="font-medium text-slate-700">Proyecto de Taller de Grado</p>
-              <p className="mt-1">Bulacia Paz Bruno Leandro · Vargas Osinaga Richard Junior</p>
+              <p className="inline-flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" /> Santa Cruz de la Sierra, Bolivia</p>
+              <p className="mt-1 text-slate-400">rewear@gmail.com</p>
             </div>
           </div>
           <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
             <span>© {new Date().getFullYear()} ReWear. Todos los derechos reservados.</span>
-            <span className="inline-flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5" /> Autenticidad verificada en blockchain</span>
+            <span className="inline-flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5" /> Hecho con propósito en Santa Cruz de la Sierra</span>
           </div>
         </div>
       </footer>
