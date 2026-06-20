@@ -29,7 +29,7 @@ export default function Home() {
             <a href="#proposito" className="hover:text-slate-900 transition-colors">Propósito</a>
             <a href="#producto" className="hover:text-slate-900 transition-colors">Producto</a>
             <a href="#equipo" className="hover:text-slate-900 transition-colors">Equipo</a>
-            <a href="#contacto" className="hover:text-slate-900 transition-colors">Contacto</a>
+            <a href="#contacto" className="hover:text-slate-900 transition-colors">Contáctanos</a>
           </nav>
           <a href={APP_URL} target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
@@ -184,7 +184,7 @@ export default function Home() {
       <section id="contacto" className="max-w-6xl mx-auto px-5 py-20">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div>
-            <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-3">Dónde estamos</p>
+            <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-3">Contáctanos</p>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Desde Santa Cruz de la Sierra, para el mundo</h2>
             <p className="mt-5 text-slate-500 leading-relaxed">
               Somos una startup boliviana con base en <strong className="text-slate-700">Santa Cruz de la Sierra</strong>.
@@ -199,6 +199,34 @@ export default function Home() {
                 <span className="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center"><Mail className="w-4 h-4" /></span>
                 rewear@gmail.com
               </p>
+            </div>
+
+            {/* Redes sociales */}
+            <div className="mt-8">
+              <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Seguinos</p>
+              <div className="flex items-center gap-3">
+                <a href="https://www.instagram.com/rewear_fashion/" target="_blank" rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-11 h-11 rounded-xl border border-slate-200 text-slate-600 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50 flex items-center justify-center transition-colors">
+                  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38 3.7 3.7 0 0 1-1.38.9c-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 1.8c-3.15 0-3.52.01-4.76.07-.9.04-1.39.19-1.72.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.33-.28.82-.32 1.72-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.9.19 1.39.32 1.72.17.43.37.74.69 1.06.32.32.63.52 1.06.69.33.13.82.28 1.72.32 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.9-.04 1.39-.19 1.72-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.33.28-.82.32-1.72.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.9-.19-1.39-.32-1.72a2.85 2.85 0 0 0-.69-1.06 2.85 2.85 0 0 0-1.06-.69c-.33-.13-.82-.28-1.72-.32-1.24-.06-1.61-.07-4.76-.07Zm0 3.06a4.98 4.98 0 1 1 0 9.96 4.98 4.98 0 0 1 0-9.96Zm0 1.8a3.18 3.18 0 1 0 0 6.36 3.18 3.18 0 0 0 0-6.36Zm5.2-.66a1.16 1.16 0 1 1-2.32 0 1.16 1.16 0 0 1 2.32 0Z" />
+                  </svg>
+                </a>
+                <a href="https://www.tiktok.com/@rewear.bo_fashion" target="_blank" rel="noopener noreferrer"
+                  aria-label="TikTok"
+                  className="w-11 h-11 rounded-xl border border-slate-200 text-slate-600 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50 flex items-center justify-center transition-colors">
+                  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden="true">
+                    <path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-2.59-2.59c.27 0 .53.04.78.12V9.79a5.67 5.67 0 0 0-.78-.05 5.69 5.69 0 1 0 5.69 5.69V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.28 4.28 0 0 1-3.25-1.48Z" />
+                  </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/rewear-bo-8a3514418/" target="_blank" rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-11 h-11 rounded-xl border border-slate-200 text-slate-600 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50 flex items-center justify-center transition-colors">
+                  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden="true">
+                    <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.64h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9V9Z" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
           <div className="relative overflow-hidden rounded-3xl bg-indigo-600 px-8 py-14 text-center">
