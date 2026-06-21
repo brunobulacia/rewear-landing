@@ -197,7 +197,7 @@ export default function Home() {
               </p>
               <p className="inline-flex items-center gap-2.5 text-slate-600">
                 <span className="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center"><Mail className="w-4 h-4" /></span>
-                rewear@gmail.com
+                rewearboscz@gmail.com
               </p>
             </div>
 
@@ -251,7 +251,7 @@ export default function Home() {
             </div>
             <div className="text-center md:text-right text-sm text-slate-500">
               <p className="inline-flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" /> Santa Cruz de la Sierra, Bolivia</p>
-              <p className="mt-1 text-slate-400">rewear@gmail.com</p>
+              <p className="mt-1 text-slate-400">rewearboscz@gmail.com</p>
             </div>
           </div>
           <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
