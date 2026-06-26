@@ -2,133 +2,139 @@
 
 ## 11.1. Introducción
 
-La **puesta en marcha** es la etapa en la que el software, una vez desarrollado y probado, deja de ser un proyecto en construcción y pasa a estar **operativo y disponible para los usuarios reales**. A diferencia de las fases anteriores —ejecutadas en entornos de prueba aislados—, aquí el producto enfrenta condiciones reales y debe estar disponible de forma continua, por lo que requiere una **preparación cuidadosa** de la infraestructura, la configuración y la seguridad.
+La **puesta en marcha** es la etapa en la que el software, una vez desarrollado y probado, deja de ser un proyecto en construcción y pasa a estar **operativo y disponible para los usuarios reales**. Para que esta transición sea exitosa, no basta con que el sistema funcione: es necesario contemplar una serie de **aspectos de recursos, costos, legales y de infraestructura** que hacen posible su operación de forma sostenible y responsable.
 
-En el caso de **ReWear**, esto implica llevar a producción un ecosistema que debe funcionar de manera coordinada: la **aplicación** (marketplace), la **API de servicios**, el **sitio web corporativo**, la **base de datos** y los **contratos inteligentes** desplegados en la red blockchain, que dan soporte al pasaporte digital NFT y al pago con custodia (escrow). A esto se suma una característica propia de la plataforma: el paso de una **red de pruebas**, sin valor económico real, a una **red principal**, que sí lo tiene.
+En el caso de **ReWear**, la plataforma boliviana de moda circular, esto implica definir qué **recursos** se emplearán, proyectar los **costos de la infraestructura en la nube**, especificar los **tipos de licencia** del software, establecer los **términos y condiciones y las políticas de privacidad** para los usuarios, y determinar las **herramientas con las que se despliega** el sistema.
 
-Este capítulo describe los **aspectos necesarios para poner ReWear en funcionamiento**: los requisitos previos, la infraestructura de producción, el despliegue y la configuración de cada componente, la verificación previa al lanzamiento, la estrategia de lanzamiento por fases y el soporte posterior, con el objetivo de asegurar una transición **ordenada, segura y controlada** hacia la operación real.
+Este capítulo describe esos aspectos, con el objetivo de asegurar una puesta en marcha **ordenada, sostenible y legalmente respaldada**.
 
-## 11.2. Requisitos previos a la puesta en marcha
+## 11.2. Recursos a utilizar
 
-Antes de lanzar la plataforma, deben cumplirse una serie de condiciones que garantizan que el sistema está listo para operar.
+Para poner en marcha y operar ReWear se requieren tres tipos de recursos:
 
-### 11.2.1. Requisitos técnicos
+### 11.2.1. Recursos humanos
 
-- El **código fuente** de los tres componentes (aplicación, API y sitio corporativo) debe estar finalizado, probado y versionado en sus repositorios.
-- Los **contratos inteligentes** (el pasaporte digital NFT y el contrato de custodia/escrow) deben estar desplegados y verificados en la red blockchain elegida.
-- La **base de datos** de producción debe estar creada y con su estructura aplicada.
-- Las **claves y credenciales** necesarias (claves de API, direcciones de contratos, billetera de la plataforma) deben estar disponibles y configuradas de forma segura.
+El equipo está conformado por los **cofundadores** del proyecto, que cubren los roles de **desarrollo** (construcción y mantenimiento del software) y de **producto** (definición de funcionalidades, marketing y atención al usuario). En su etapa inicial, una startup de este tamaño puede operar con este equipo reducido, incorporando nuevos roles a medida que crece.
 
-### 11.2.2. Requisitos organizativos y legales
+### 11.2.2. Recursos de hardware y software
 
-- Tener resueltos los **aspectos legales** para operar como empresa (ver Capítulo V): registro, propiedad intelectual y términos de uso.
-- Definir los **canales de soporte** y de atención al usuario.
-- Contar con el **equipo responsable** de la operación y el mantenimiento.
+- **Equipos de desarrollo:** computadoras personales con capacidad suficiente para programar, probar y desplegar el sistema.
+- **Herramientas de software:** editor de código, navegador, control de versiones (Git/GitHub) y las tecnologías propias del proyecto (entornos de ejecución de la aplicación, la API y los contratos inteligentes).
 
-## 11.3. Infraestructura de producción
+### 11.2.3. Recursos y servicios en la nube
 
-ReWear se apoya en servicios en la nube que permiten su funcionamiento permanente, sin necesidad de administrar servidores físicos propios. La infraestructura de producción se compone de:
+Al ser un sistema web, ReWear no requiere servidores físicos propios, sino **servicios en la nube** que garantizan su disponibilidad:
 
-| Componente | Función en producción |
-|------------|------------------------|
-| **Aplicación (marketplace)** | Alojada en una plataforma de despliegue web (Vercel), accesible desde cualquier navegador. Es donde los usuarios compran y venden prendas. |
-| **Sitio web corporativo** | Alojado también en la nube; es la cara pública e institucional de la empresa. |
-| **API de servicios** | Alojada en un servicio en la nube (Railway), atiende las peticiones de la aplicación: usuarios, prendas, transacciones, verificación con IA, etc. |
-| **Base de datos** | Base de datos PostgreSQL en la nube, donde se almacena la información del sistema (usuarios, prendas, transacciones, calificaciones). |
-| **Red blockchain** | Red de Ethereum donde viven los contratos inteligentes (pasaporte NFT y escrow) que dan soporte a la autenticidad y al pago protegido. |
-| **Servicios externos** | Almacenamiento de imágenes en la nube y servicio de inteligencia artificial para la verificación de prendas y el asistente virtual. |
+- **Alojamiento** de la aplicación y del sitio corporativo.
+- **Alojamiento** de la API de servicios.
+- **Base de datos** administrada (PostgreSQL).
+- **Acceso a la red blockchain** (proveedor de nodo / RPC).
+- **Servicios externos:** almacenamiento de imágenes en la nube e inteligencia artificial (verificación de prendas y asistente virtual).
 
-Esta arquitectura en la nube ofrece **alta disponibilidad, escalabilidad y bajo costo de mantenimiento**, adecuada para una startup en su etapa inicial.
+## 11.3. Herramientas para el despliegue del software
 
-## 11.4. Despliegue de los componentes
+El despliegue de ReWear se apoya en herramientas que **automatizan la publicación** de cada componente:
 
-La puesta en producción se realiza desplegando cada componente en su servicio correspondiente:
+| Componente | Herramienta de despliegue | Función |
+|------------|---------------------------|---------|
+| Aplicación (marketplace) y sitio corporativo | **Vercel** | Publica automáticamente cada nueva versión y la deja accesible mediante una URL pública. |
+| API de servicios y base de datos | **Railway** | Aloja la API y la base de datos PostgreSQL en la nube. |
+| Control de versiones e integración | **Git y GitHub** | Versiona el código y dispara el despliegue automático ante cada cambio. |
+| Contratos inteligentes | **Hardhat** | Compila y despliega los contratos en la red blockchain. |
+| Empaquetado / portabilidad | **Docker** | Permite empaquetar el sistema para ejecutarlo en distintos entornos con configuración mínima. |
 
-1. **Aplicación y sitio corporativo:** se publican en la plataforma de despliegue web, que los hace accesibles mediante una dirección pública (URL). Cada actualización del código genera automáticamente una nueva versión publicada.
-2. **API de servicios:** se despliega en su servicio en la nube, quedando disponible para que la aplicación se comunique con ella.
-3. **Base de datos:** se aprovisiona en la nube y se conecta con la API.
-4. **Contratos inteligentes:** se despliegan una sola vez en la red blockchain; sus **direcciones** se registran en la configuración de la aplicación y la API para que el sistema pueda interactuar con ellos.
+Estas herramientas permiten un modelo de **despliegue continuo**: cada cambio aprobado en el repositorio se publica automáticamente, reduciendo el esfuerzo manual y los errores.
 
-## 11.5. Configuración del entorno de producción
+## 11.4. Proyección de costos de infraestructura en la nube
 
-Para que todos los componentes funcionen juntos en producción, se configuran una serie de **parámetros del entorno** (variables de configuración), que se mantienen de forma **segura y separada del código**:
+En su etapa inicial, ReWear opera sobre servicios con **planes gratuitos o de bajo costo** (Vercel y Railway), suficientes para un volumen de usuarios reducido. Sin embargo, para una operación a mayor escala, conviene **proyectar el costo** de migrar la infraestructura a un proveedor de nube de mayor capacidad. A continuación se presenta una estimación comparativa entre los tres principales: **Amazon Web Services (AWS)**, **Microsoft Azure** y **Google Cloud Platform (GCP)**.
 
-- **Direcciones públicas** que conectan la aplicación con la API y con el sitio.
-- **Direcciones de los contratos inteligentes** desplegados.
-- **Claves de los servicios externos** (inteligencia artificial, almacenamiento de imágenes).
-- **Credenciales de la base de datos.**
-- **Datos de la billetera de la plataforma** (utilizada para las operaciones automáticas en la blockchain).
+| Recurso | AWS | Azure | Google Cloud |
+|---------|-----|-------|--------------|
+| Cómputo (aplicación + API) | EC2 t3.small (~$15) | App Service B1 (~$13) | Compute e2-small (~$13) |
+| Base de datos PostgreSQL administrada | RDS db.t3.micro (~$15) | Azure DB for PostgreSQL (~$20) | Cloud SQL (~$15) |
+| Almacenamiento + CDN + ancho de banda | S3 + CloudFront (~$8) | Blob + CDN (~$8) | Cloud Storage + CDN (~$8) |
+| **Total mensual aproximado** | **~$38 USD** | **~$41 USD** | **~$36 USD** |
+| **Total anual aproximado** | **~$456 USD** | **~$492 USD** | **~$432 USD** |
 
-Estos datos sensibles **nunca se publican en el código fuente**: se cargan únicamente en los paneles de configuración de los servicios en la nube, garantizando la seguridad del sistema.
+> *Los valores son estimaciones referenciales para una operación inicial de bajo tráfico. Los precios varían según la región, el nivel de uso, el tipo de plan y las promociones de cada proveedor.*
 
-## 11.6. De la red de pruebas a la red real (consideración clave)
+A estos costos se suman otros servicios complementarios:
 
-Un aspecto **central y propio de ReWear** por su naturaleza basada en blockchain es la diferencia entre operar sobre una **red de pruebas** y una **red real**:
+- **Acceso a la red blockchain (RPC):** proveedores como Alchemy o Infura ofrecen un **plan gratuito** suficiente para la etapa inicial.
+- **Servicio de inteligencia artificial:** se paga por uso (verificación de prendas y asistente virtual); su costo depende del volumen de operaciones.
+- **Nombre de dominio:** aproximadamente **$12 USD al año**.
+- **Comisiones de red (gas)** de la blockchain, en caso de operar sobre una red real (ver sección de billetera de la plataforma).
 
-- Durante el desarrollo, la plataforma opera sobre una **red de pruebas de Ethereum (testnet)**, donde las transacciones se realizan con criptomoneda **sin valor real** (de prueba). Esto permite validar todo el funcionamiento —verificación, emisión de pasaportes NFT, pagos en custodia y disputas— **sin riesgo económico**.
-- Para una operación **comercial real**, sería necesario migrar los contratos inteligentes a una **red principal (mainnet)** o a una red de bajo costo, donde las transacciones se pagan con criptomoneda de **valor real**.
+En conclusión, la infraestructura de ReWear tiene un **costo mensual estimado de entre 35 y 45 dólares** en cualquiera de los tres proveedores principales, manteniéndose accesible para una startup en crecimiento.
 
-Esta migración debe planificarse cuidadosamente, ya que implica **costos de transacción reales (gas)** y requiere que tanto la plataforma como los usuarios cuenten con fondos. Por ello, en su etapa inicial, ReWear puede mantenerse en la red de pruebas para validación y demostración, y reservar el paso a la red real para una fase de operación comercial.
+## 11.5. Tipos de licencia
 
-## 11.7. Billetera de la plataforma y costos de operación
+ReWear combina **software de terceros** con **software propio**, por lo que conviene distinguir los tipos de licencia involucrados (ver también el Capítulo V: Aspectos Legales).
 
-ReWear utiliza una **billetera propia de la plataforma** para ejecutar las operaciones automáticas en la blockchain: emitir el pasaporte NFT de cada prenda, transferirlo al comprador y resolver disputas. Cada una de estas operaciones consume una pequeña comisión de red (**gas**).
+### 11.5.1. Licencias del software de terceros (libre / código abierto)
 
-Para la puesta en marcha es necesario:
+Las tecnologías sobre las que se construye ReWear son de **software libre** y se distribuyen bajo licencias permisivas, lo que permite usarlas sin costo y con libertad para construir un producto comercial:
 
-- Mantener la **billetera de la plataforma con fondos suficientes** para cubrir esas operaciones.
-- Considerar que, en una operación real, estos costos forman parte de los **gastos operativos** del negocio y deben contemplarse en el modelo económico.
+| Tecnología | Tipo de licencia |
+|-----------|------------------|
+| Next.js, React, NestJS, Tailwind CSS, ethers.js, OpenZeppelin | **MIT** |
+| Prisma | **Apache 2.0** |
+| PostgreSQL | **Licencia PostgreSQL** (tipo permisiva) |
 
-## 11.8. Verificación previa al lanzamiento
+Estas licencias permisivas autorizan el uso, modificación y distribución del software, incluso dentro de productos comerciales, siempre que se respeten los avisos de copyright correspondientes.
 
-Antes de habilitar la plataforma al público se realiza una **verificación integral** que confirma que todo funciona en el entorno real. Esta lista de control incluye:
+### 11.5.2. Licencia del producto ReWear (privativo)
 
-- ✅ La aplicación y el sitio corporativo cargan correctamente desde su dirección pública.
-- ✅ El registro e inicio de sesión con billetera funciona.
-- ✅ Se puede **publicar una prenda** y la verificación con IA responde.
-- ✅ Se **emite el pasaporte NFT** y se visualiza su información.
-- ✅ Se puede **comprar con pago protegido (escrow)** y confirmar la entrega.
-- ✅ El flujo de **disputa y reembolso** funciona correctamente.
-- ✅ El **asistente virtual (chatbot)** responde las consultas.
-- ✅ Las **variables de configuración** de producción están correctamente cargadas.
+El **producto ReWear en sí** —el código propio y la marca— se concibe como **software privativo (propietario)**: la empresa conserva los derechos sobre su código fuente y no lo libera públicamente, ya que constituye el activo central del negocio. Los usuarios acceden al servicio a través de la plataforma, sin obtener derechos sobre su código.
 
-Solo cuando todos los puntos se cumplen, la plataforma se considera lista para el lanzamiento.
+## 11.6. Términos y condiciones y políticas de privacidad
 
-## 11.9. Estrategia de lanzamiento por fases
+Para operar de forma legal y transparente, ReWear debe contar con dos documentos que regulen la relación con sus usuarios:
 
-La puesta en marcha no se realiza de golpe, sino de manera **progresiva y controlada**, para reducir riesgos:
+### 11.6.1. Términos y condiciones
 
-1. **Fase piloto (cerrada):** se habilita la plataforma a un grupo reducido de usuarios de confianza, que prueban el sistema en condiciones reales y reportan errores o mejoras.
-2. **Lanzamiento (Santa Cruz de la Sierra):** se abre la plataforma al público objetivo local, acompañado de la estrategia de marketing y difusión (ver Capítulo X).
-3. **Expansión:** una vez consolidada la operación y la confianza, se amplía el alcance a otras ciudades y se evalúa el paso a una operación comercial plena.
+Establecen las **reglas de uso** de la plataforma. En el caso de ReWear, contemplan, entre otros:
 
-## 11.10. Capacitación y acompañamiento del usuario
+- Las **condiciones para comprar y vender** prendas y las responsabilidades de cada parte.
+- El funcionamiento del **pago con custodia (escrow)** y del **proceso de disputas**.
+- La aclaración de que ReWear actúa como **intermediario de confianza** entre comprador y vendedor.
+- Las **conductas prohibidas** (publicar prendas falsas, fraudes, etc.) y las consecuencias.
+- La **limitación de responsabilidad** y las condiciones del servicio.
 
-Dado que ReWear introduce conceptos nuevos para el público general (billeteras digitales, pasaportes NFT, pago en custodia), la puesta en marcha contempla **acompañar al usuario**:
+### 11.6.2. Políticas de privacidad
 
-- El **sitio web corporativo** explica de forma simple qué es y cómo funciona la plataforma.
-- El **asistente virtual (chatbot)** resuelve dudas en tiempo real.
-- Se prepara **contenido educativo** (guías y videos) sobre cómo comprar, vender y conectar la billetera.
+Describen **qué datos se recopilan y cómo se utilizan**, en línea con la protección de datos personales:
 
-## 11.11. Soporte, monitoreo y mantenimiento
+- **Datos recopilados:** dirección de la billetera digital, nombre, correo electrónico, prendas publicadas e historial de transacciones.
+- **Uso de los datos:** operar la plataforma, verificar prendas, procesar pagos y mejorar el servicio.
+- **Aclaración sobre la blockchain:** cierta información (como el pasaporte NFT y el historial de transacciones) queda registrada de forma **pública e inmutable** en la red, lo cual se informa explícitamente al usuario.
+- **Derechos del usuario** sobre sus datos y los **canales de contacto** para ejercerlos.
 
-Una vez en operación, se mantienen actividades continuas para asegurar el buen funcionamiento:
+Ambos documentos deben estar **accesibles desde la plataforma** y ser **aceptados por el usuario** al registrarse, garantizando transparencia y respaldo legal a la operación.
 
-- **Monitoreo** de la disponibilidad de la aplicación, la API y la base de datos.
-- **Canales de soporte** (correo y redes sociales) para atender a los usuarios.
-- **Mantenimiento correctivo** (corrección de errores que surjan en producción) y **evolutivo** (mejoras y nuevas funciones).
-- **Respaldos (backups)** periódicos de la base de datos.
+## 11.7. Incorporación del agente conversacional (chatbot)
 
-## 11.12. Plan de contingencia
+Como parte de la puesta en marcha, ReWear incorpora un **agente conversacional (chatbot)** basado en **inteligencia artificial**, integrado en el sitio web corporativo. Su finalidad es **atender y orientar a los visitantes en tiempo real**, especialmente a quienes no conocen la plataforma.
 
-Para reducir el impacto de cualquier inconveniente durante o después de la puesta en marcha, se prevén medidas básicas de contingencia:
+### 11.7.1. Propósito
 
-- **Reversión de versiones:** si una nueva versión presenta fallas, se puede volver a la versión anterior estable de forma inmediata.
-- **Respaldo de datos:** ante un problema en la base de datos, se restaura desde la copia de seguridad más reciente.
-- **Consistencia de las operaciones:** el sistema está diseñado para que las operaciones críticas (pagos, disputas) se confirmen primero en la blockchain antes de registrarse, evitando estados inconsistentes.
+El agente responde de forma inmediata las consultas frecuentes sobre la empresa y el producto: **qué es ReWear, cómo funciona, cómo se usa y dónde está ubicada**. De esta manera, reduce la barrera de entrada de los usuarios nuevos, refuerza la confianza antes de ingresar a la aplicación y descongestiona la atención, sin necesidad de personal disponible de forma permanente.
 
-## 11.13. Conclusión
+### 11.7.2. Funcionamiento
 
-La puesta en marcha de ReWear consiste en llevar la plataforma desde el entorno de desarrollo hasta un **entorno de producción real, accesible y operativo**. Esto requiere preparar la infraestructura en la nube, desplegar y configurar cada componente de forma segura, atender la particularidad del paso de una red de pruebas a una red real de blockchain, verificar integralmente el funcionamiento y planificar un **lanzamiento progresivo** acompañado de soporte y monitoreo.
+El agente utiliza un **modelo de lenguaje de inteligencia artificial** (servicio de Anthropic – Claude). El visitante escribe su pregunta y la respuesta **se genera y se muestra de manera progresiva** (en tiempo real, palabra por palabra), ofreciendo una experiencia similar a la de un asistente conversacional moderno. El agente está **acotado deliberadamente** para responder únicamente sobre ReWear; ante preguntas ajenas al proyecto, indica de forma amable que solo puede ayudar con temas de la plataforma.
 
-Una puesta en marcha **ordenada y por fases** permite a ReWear iniciar su operación minimizando riesgos, generando confianza en los primeros usuarios y sentando las bases para su crecimiento y eventual operación comercial plena.
+### 11.7.3. Incorporación en producción
+
+- El agente se integra como un **componente del sitio web** (un botón flotante disponible en todo momento).
+- La comunicación con el servicio de inteligencia artificial se realiza de forma **segura desde el servidor**, de modo que la **clave de acceso al servicio nunca queda expuesta** al usuario; se gestiona como una variable de configuración protegida (ver sección 11.4 sobre servicios y costos).
+- Su **costo se paga por uso**, por lo que su consumo se contempla dentro de los gastos operativos y se monitorea.
+
+### 11.7.4. Aporte a la puesta en marcha
+
+La incorporación del agente conversacional **mejora la atención al usuario** desde el primer día de operación, acompaña el proceso de incorporación (*onboarding*) de los nuevos visitantes y complementa los demás canales de contacto, contribuyendo a una puesta en marcha más sólida en términos de experiencia y confianza.
+
+## 11.8. Conclusión
+
+La puesta en marcha de ReWear requiere, además de un software funcional, la definición de los **recursos** humanos y tecnológicos necesarios, una **proyección realista de los costos** de la infraestructura en la nube, la especificación de los **tipos de licencia** del software propio y de terceros, la elaboración de los **términos y condiciones y las políticas de privacidad** que regulan la relación con los usuarios, y la incorporación de un **agente conversacional** que acompaña al usuario desde el inicio. Sumado a las **herramientas de despliegue** que automatizan la publicación del sistema, estos aspectos permiten una operación **sostenible, legal y ordenada**, sentando las bases para el crecimiento de la startup.
