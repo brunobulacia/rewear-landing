@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Habilita el modo oscuro por clase (.dark en <html>) además del `dark:` de Tailwind. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 html {
   scroll-behavior: smooth;
 }
@@ -13,3 +16,66 @@ html {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/*
+ * Modo oscuro sin tocar los usos de color de la landing: como las clases de
+ * Tailwind son CSS real, remapeamos la PALETA NEUTRA (slate/gray/white) bajo
+ * `.dark`. Los acentos (indigo/emerald/etc.) se mantienen. `text-white` NO se
+ * remapea (vive sobre botones de color). Reglas sin @layer → ganan sobre las
+ * utilidades de Tailwind sin !important.
+ */
+.dark {
+  color-scheme: dark;
+
+  --rw-bg:        #0b1120;
+  --rw-surface:   #161d2e;
+  --rw-surface-2: #1e2738;
+  --rw-surface-3: #273245;
+  --rw-border:    #2a3447;
+  --rw-border-2:  #222b3c;
+  --rw-text:      #e8edf5;
+  --rw-text-2:    #c2ccdb;
+  --rw-muted:     #93a1b5;
+  --rw-faint:     #6b7689;
+}
+
+.dark body { background-color: var(--rw-bg); }
+
+/* Fondos */
+.dark .bg-white      { background-color: var(--rw-surface); }
+.dark .bg-slate-50,
+.dark .bg-gray-50    { background-color: var(--rw-bg); }
+.dark .bg-slate-100,
+.dark .bg-gray-100   { background-color: var(--rw-surface-2); }
+.dark .bg-slate-200  { background-color: var(--rw-surface-3); }
+.dark .bg-slate-300  { background-color: #3a475e; }
+.dark .bg-slate-400  { background-color: #46556e; }
+/* Header translúcido (bg-white/80) */
+.dark .bg-white\/80  { background-color: rgba(11,17,32,.8); }
+
+/* Texto */
+.dark .text-slate-900, .dark .text-slate-800, .dark .text-gray-900 { color: var(--rw-text); }
+.dark .text-slate-700, .dark .text-slate-600, .dark .text-gray-700, .dark .text-gray-600 { color: var(--rw-text-2); }
+.dark .text-slate-500, .dark .text-gray-500 { color: var(--rw-muted); }
+.dark .text-slate-400, .dark .text-slate-300, .dark .text-slate-200, .dark .text-gray-400 { color: var(--rw-faint); }
+
+/* Bordes */
+.dark .border-slate-200, .dark .border-gray-200 { border-color: var(--rw-border); }
+.dark .border-slate-100, .dark .border-gray-100 { border-color: var(--rw-border-2); }
+
+/* Estados hover neutros */
+.dark .hover\:bg-slate-50:hover  { background-color: var(--rw-surface-2); }
+.dark .hover\:text-slate-900:hover { color: var(--rw-text); }
+
+/* Acentos tenues → tintes translúcidos + texto de acento aclarado */
+.dark .bg-indigo-50  { background-color: rgba(99,102,241,.12); }
+.dark .bg-indigo-100 { background-color: rgba(99,102,241,.18); }
+.dark .border-indigo-200 { border-color: rgba(99,102,241,.32); }
+.dark .text-indigo-900, .dark .text-indigo-800, .dark .text-indigo-700 { color: #a5b4fc; }
+.dark .text-indigo-600 { color: #818cf8; }
+.dark .bg-emerald-50  { background-color: rgba(16,185,129,.12); }
+.dark .text-emerald-700, .dark .text-emerald-800 { color: #6ee7b7; }
+
+/* Gradiente del hero (bg-gradient-to-b from-indigo-50 via-white to-white):
+   en oscuro lo aplanamos a fondo oscuro para que no quede una franja clara. */
+.dark .bg-gradient-to-b { background-image: none; background-color: var(--rw-bg); }

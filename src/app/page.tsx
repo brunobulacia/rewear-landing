@@ -3,6 +3,7 @@ import {
   Leaf, Sparkles, ShieldCheck, Handshake,
 } from 'lucide-react';
 import { ScreenshotShowcase } from '@/components/ScreenshotShowcase';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://rewear-app-xi.vercel.app';
 
@@ -31,10 +32,13 @@ export default function Home() {
             <a href="#equipo" className="hover:text-slate-900 transition-colors">Equipo</a>
             <a href="#contacto" className="hover:text-slate-900 transition-colors">Contáctanos</a>
           </nav>
-          <a href={APP_URL} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
-            Ir a la app <ArrowRight className="w-4 h-4" />
-          </a>
+          <div className="flex items-center gap-2.5">
+            <ThemeToggle />
+            <a href={APP_URL} target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
+              Ir a la app <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
         </div>
       </header>
 
